@@ -125,10 +125,10 @@
 			}
 		})
 		// 拼接字符串 将拼接好的字符串显示在页面中
-		function render() {
+		function render(arr) {
 			// 字符串拼接
 			let html = template('taskTpl', {
-				tasks: taskAry
+				tasks:arr || taskAry
 			})
 			// 将拼接好的字符串显示在ul标签中
 			taskBox.html(html)
@@ -250,12 +250,8 @@
 		})
 		// 未完成任务列表
 		$('#active').on('click', function () {
-			// 字符串拼接
-			let html = template('taskTpl', {
-				tasks: taskAry.filter(item => item.completed == false)
-			})
-			// 将拼接好的字符串显示在ul标签中
-			taskBox.html(html)
+			let a = taskAry.filter(item => item.completed == false)
+			render(a)
 			$('.filters a').removeClass()
 			$(this).addClass('selected')
 			// 未完成任务的数量
@@ -264,12 +260,8 @@
 		})
 		// 已完成任务列表
 		$('#completed').on('click', function () {
-			// 字符串拼接
-			let html = template('taskTpl', {
-				tasks: taskAry.filter(item => item.completed == true)
-			})
-			// 将拼接好的字符串显示在ul标签中
-			taskBox.html(html)
+			let aa = taskAry.filter(item => item.completed == false)
+			render(aa)
 			$('.filters a').removeClass()
 			$(this).addClass('selected')
 			// 存储结果的变量
