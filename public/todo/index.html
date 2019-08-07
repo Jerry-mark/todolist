@@ -175,8 +175,11 @@
 					task.completed = response.completed
 					// 将数组中任务的最新状态更新到页面中
 					render()
-					// 计算未完成的任务数量
-					calcCount()
+					// 获取全部任务的数量
+					let count = taskAry.length
+					strong.text(count)
+					$('.filters a').removeClass()
+					$('#all').addClass('selected')
 				}
 			})
 		})
